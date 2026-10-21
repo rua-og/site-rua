@@ -1,5 +1,5 @@
 -- RUA · schema inicial
--- Rodar no Supabase: SQL Editor > colar este arquivo > Run.
+-- Aplicado no projeto Supabase site-rua (sa-east-1) em 21/10/2026, em partes (0001a a 0001g).
 -- Regras: placa, celular e nascimento nunca saem em leitura pública.
 
 create extension if not exists pgcrypto;
@@ -57,7 +57,7 @@ create table codigo_contadores (
 );
 
 create or replace function gerar_codigo_membro(data_entrada date) returns text
-language plpgsql as $$
+language plpgsql set search_path = public as $$
 declare
   pref text := to_char(data_entrada, 'YY') || chr(64 + extract(month from data_entrada)::int);
   n int;
@@ -96,8 +96,9 @@ create table membros (
 create index membros_status_idx on membros (status);
 
 -- Gera o código na primeira vez que o membro fica ativo
+-- security definer: o contador de códigos não tem política de acesso, só o trigger mexe nele
 create or replace function membros_antes_salvar() returns trigger
-language plpgsql as $$
+language plpgsql security definer set search_path = public as $$
 begin
   new.atualizado_em := now();
   if new.status = 'ativo' and new.codigo is null then
@@ -325,7 +326,8 @@ begin
            instagram = trim(p_instagram), tipo_conta = p_tipo_conta, mostra_instagram = p_mostra_instagram,
            aceita_novidades = p_aceita_novidades, status = 'em_analise'
      where id = v_id;
-    delete from carros where membro_id = v_id;
+    -- reenvio substitui os carros anteriores, que ainda estavam em análise
+    update carros set ativo = false where membro_id = v_id;
   end if;
 
   for v_carro in select * from jsonb_array_elements(p_carros) loop
@@ -382,6 +384,10 @@ revoke all on function fila_inscricoes() from public, anon;
 revoke all on function atualizar_meu_perfil(text, tipo_conta, boolean) from public, anon;
 revoke all on function gerar_codigo_membro(date) from public, anon, authenticated;
 revoke all on function membros_antes_salvar() from public, anon, authenticated;
+revoke all on function is_admin() from public, anon;
+revoke all on function meu_membro_id() from public, anon;
+grant execute on function is_admin() to authenticated;
+grant execute on function meu_membro_id() to authenticated;
 grant execute on function numeros_publicos() to anon, authenticated;
 grant execute on function membros_publicos() to anon, authenticated;
 grant execute on function enviar_inscricao(text, date, text, char, text, text, tipo_conta, boolean, boolean, jsonb) to anon, authenticated;

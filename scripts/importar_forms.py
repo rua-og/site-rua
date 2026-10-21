@@ -89,7 +89,7 @@ def main(caminho):
         cel = re.sub(r"\D", "", r["Celular"])
         pessoas.setdefault(cel, []).append(r)
 
-    sql = ["-- Importação do Google Forms. Rodar no SQL Editor do Supabase.", "begin;"]
+    sql = ["-- Importação do Google Forms. Rodar no SQL Editor do Supabase.", "begin;", "set local timezone to 'America/Sao_Paulo';"]
     rel = {"duplicados": [], "pendencias": {}, "alertas": [], "montadora": [], "sem_montadora": [], "celular": []}
     contagem = {"ativo": 0, "reprovado": 0, "em_analise": 0}
 
