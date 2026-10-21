@@ -380,6 +380,8 @@ $$;
 -- Permissões de execução
 revoke all on function fila_inscricoes() from public, anon;
 revoke all on function atualizar_meu_perfil(text, tipo_conta, boolean) from public, anon;
+revoke all on function gerar_codigo_membro(date) from public, anon, authenticated;
+revoke all on function membros_antes_salvar() from public, anon, authenticated;
 grant execute on function numeros_publicos() to anon, authenticated;
 grant execute on function membros_publicos() to anon, authenticated;
 grant execute on function enviar_inscricao(text, date, text, char, text, text, tipo_conta, boolean, boolean, jsonb) to anon, authenticated;
