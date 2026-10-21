@@ -60,7 +60,7 @@ Em caso de dúvida entre este guia e a especificação, vale a especificação. 
 | Painel | `/admin`, `/admin/membros`, `/admin/mensagens` | Fila, membros, mensagens e códigos |
 
 Big numbers (de `big_numbers()`): membros ativos, carros ativos, montadoras, projetos autorais. Textos sugeridos:
-"Já somos X na RUA", "X projetos rodando", "X montadoras, uma RUA só", "X projetos autorais".
+"Já somos X na RUA", "X projetos na RUA", "X montadoras, uma RUA só", "X Chevettes exclusivos" (projetos autorais).
 Projetos autorais (Faísca e Frank) ficam na tabela `projetos`, leitura pública, e alimentam `/projetos`.
 
 ## Formulário de inscrição
