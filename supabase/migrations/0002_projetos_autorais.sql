@@ -18,7 +18,7 @@ insert into projetos (slug, nome, carro, descricao, ordem) values
  ('faisca', 'Faísca', 'Chevette', 'Projeto de drift da RUA', 1),
  ('frank', 'Frank', 'Chevette Acelero turbo', 'Projeto turbo da RUA', 2);
 
--- Big numbers da inicial: usar esta função no site
+-- Não usada no site por decisão de 21/10/2026 (big numbers ficaram só membros e projetos)
 create or replace function big_numbers()
 returns table (membros_ativos int, carros_ativos int, montadoras int, projetos_autorais int)
 language sql stable security definer set search_path = public as $$

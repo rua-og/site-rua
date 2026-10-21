@@ -41,7 +41,7 @@ Em caso de dúvida entre este guia e a especificação, vale a especificação. 
 
 - Placa, celular, nascimento e cidade NUNCA aparecem em página pública.
 - Página de Membros: só status `ativo` com aceite de imagem, via função `membros_publicos()`. Instagram só se `mostra_instagram`.
-- Leitura pública só pelas funções `big_numbers()` e `membros_publicos()` e pela tabela `projetos`. Nunca ler tabelas direto com a chave anon.
+- Leitura pública só pelas funções `numeros_publicos()` e `membros_publicos()` e pela tabela `projetos`. Nunca ler tabelas direto com a chave anon.
 - A chave service role só no servidor (route handlers / server actions), nunca no cliente.
 
 ## Páginas (todas com o mesmo rodapé: mapa das páginas públicas + Instagram e WhatsApp)
@@ -59,9 +59,9 @@ Em caso de dúvida entre este guia e a especificação, vale a especificação. 
 | Membro | `/membro`, `/membro/carros`, `/membro/mensagens` | Perfil, carros e atualizações, mensagens |
 | Painel | `/admin`, `/admin/membros`, `/admin/mensagens` | Fila, membros, mensagens e códigos |
 
-Big numbers (de `big_numbers()`): membros ativos, carros ativos, montadoras, projetos autorais. Textos sugeridos:
-"Já somos X na RUA", "X projetos na RUA", "X montadoras, uma RUA só", "X Chevettes exclusivos" (projetos autorais).
-Projetos autorais (Faísca e Frank) ficam na tabela `projetos`, leitura pública, e alimentam `/projetos`.
+Big numbers da inicial: só dois, de `numeros_publicos()`: membros ativos e carros ativos.
+Textos: "Já somos X na RUA" e "X projetos na RUA". Não mostrar montadoras nem projetos autorais.
+Projetos autorais (Faísca e Frank) ficam na tabela `projetos`, leitura pública, e alimentam só a página `/projetos`.
 
 ## Formulário de inscrição
 
