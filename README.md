@@ -15,3 +15,12 @@ python3 scripts/importar_forms.py respostas.csv
 
 Gera `importacao/importar.sql` e `importacao/relatorio.md`. Rodar o SQL no Supabase depois do schema.
 A pasta `importacao/` tem dados pessoais e não vai pro GitHub.
+
+## Rodar o site
+
+```
+npm install
+npm run dev
+```
+
+Precisa de `.env.local` com `NEXT_PUBLIC_SUPABASE_URL` e `NEXT_PUBLIC_SUPABASE_ANON_KEY` (os mesmos da Vercel: `vercel env pull .env.local`).

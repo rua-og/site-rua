@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+/* Identidade RUA: só preto, branco e verde. */
+@theme inline {
+  --color-preto: #000000;
+  --color-branco: #ffffff;
+  --color-verde: #dbfd19;
+
+  --font-titulo: var(--font-transrobotics), "Arial Black", sans-serif;
+  --font-corpo: var(--font-codec), system-ui, sans-serif;
+  --font-lust: var(--font-lust-local), cursive;
+  --font-fundo: var(--font-sixcaps), "Arial Narrow", sans-serif;
+}
+
+html {
+  background: #000000;
+  color: #ffffff;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #000000;
+  color: #ffffff;
+  font-family: var(--font-codec), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: #dbfd19;
+  color: #000000;
+}
+
+:focus-visible {
+  outline: 2px solid #dbfd19;
+  outline-offset: 3px;
+}
+
+@layer components {
+  /* Títulos grandes em TransRobotics Italic */
+  .titulo {
+    font-family: var(--font-transrobotics), "Arial Black", sans-serif;
+    text-transform: uppercase;
+    line-height: 0.88;
+    letter-spacing: -0.01em;
+  }
+
+  /* Linha verde sob título */
+  .linha-verde::after {
+    content: "";
+    display: block;
+    width: 72px;
+    height: 4px;
+    margin-top: 18px;
+    background: #dbfd19;
+  }
+
+  /* Marca-texto na frase-chave */
+  .marca-texto {
+    background: #dbfd19;
+    color: #000000;
+    padding: 0 0.25em;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  /* Six Caps: só fundo, sempre vazado */
+  .vazado {
+    font-family: var(--font-sixcaps), "Arial Narrow", sans-serif;
+    color: transparent;
+    -webkit-text-stroke: 1px rgb(255 255 255 / 0.22);
+    text-transform: uppercase;
+    line-height: 0.8;
+    white-space: nowrap;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  /* Pincelada: caractere da Lust ampliado, em verde, na borda da seção */
+  .pincelada {
+    font-family: var(--font-lust-local), cursive;
+    color: #dbfd19;
+    line-height: 1;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .etiqueta {
+    font-family: var(--font-codec), system-ui, sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #dbfd19;
+  }
+
+  .botao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 48px;
+    padding: 0 1.4rem;
+    font-family: var(--font-codec), system-ui, sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: 2px solid #dbfd19;
+    transition: background-color 150ms, color 150ms;
+  }
+  .botao-verde {
+    background: #dbfd19;
+    color: #000000;
+  }
+  .botao-verde:hover {
+    background: #000000;
+    color: #dbfd19;
+  }
+  .botao-linha {
+    color: #dbfd19;
+  }
+  .botao-linha:hover {
+    background: #dbfd19;
+    color: #000000;
+  }
+
+  .link {
+    color: #dbfd19;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+}
