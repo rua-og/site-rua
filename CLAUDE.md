@@ -48,7 +48,7 @@ Em caso de dúvida entre este guia e a especificação, vale a especificação. 
 
 | Área | Rota | Conteúdo |
 | --- | --- | --- |
-| Pública | `/` | Hero, big numbers, manifesto, como funciona, Faísca e Frank, destaque de membros, merch, chamada pra inscrição |
+| Pública | `/` | Hero, big number, manifesto, como funciona, Faísca e Frank, destaque de membros, merch, chamada pra inscrição |
 | Pública | `/sobre` | Rua Unindo Amigos, valores, regras da comunidade |
 | Pública | `/projetos` | Faísca (Chevette drift) e Frank (Chevette Acelero turbo), bastidores |
 | Pública | `/membros` | Repertório com busca por nome, montadora e carro |
@@ -59,8 +59,8 @@ Em caso de dúvida entre este guia e a especificação, vale a especificação. 
 | Membro | `/membro`, `/membro/carros`, `/membro/mensagens` | Perfil, carros e atualizações, mensagens |
 | Painel | `/admin`, `/admin/membros`, `/admin/mensagens` | Fila, membros, mensagens e códigos |
 
-Big numbers da inicial: só dois, de `numeros_publicos()`: membros ativos e carros ativos.
-Textos: "Já somos X na RUA" e "X projetos na RUA". Não mostrar montadoras nem projetos autorais.
+Big number da inicial: um só, carros ativos de `numeros_publicos()`, com o texto exato "Já são X projetos na RUA".
+Não mostrar outros números (membros, montadoras, projetos autorais).
 Projetos autorais (Faísca e Frank) ficam na tabela `projetos`, leitura pública, e alimentam só a página `/projetos`.
 
 ## Formulário de inscrição
